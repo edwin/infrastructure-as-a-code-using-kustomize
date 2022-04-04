@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-php-docker-helloworld
+  labels:
+    app: example-php-docker-helloworld
+spec:
+  selector:
+    matchLabels:
+      app: example-php-docker-helloworld
+  template:
+    metadata:
+      labels:
+        app: example-php-docker-helloworld
+    spec:
+      containers:
+        - name: example-php-docker-helloworld
+          image: appuio/example-php-docker-helloworld
+          ports:
+            - containerPort: 8080
