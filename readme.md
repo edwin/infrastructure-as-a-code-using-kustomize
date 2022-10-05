@@ -1,7 +1,7 @@
 # Infrastructure as a code by using Kustomize
 
 ## Concept
-add a base yaml template as references, and will be patch by `Kustomize` depends on the target environment.
+add a base yaml template as references, and will be patch by `Kustomize` depends on the target environment. It would generate a new `name` and `namespace` depending on the targetted environment.
 
 sample command
 ```
@@ -16,6 +16,7 @@ metadata:
   labels:
     app: example-php-docker-helloworld
   name: sit-example-php-docker-helloworld
+  namespace: sit-helloworld-ns
 spec:
   ports:
   - port: 8080
@@ -29,6 +30,7 @@ metadata:
   labels:
     app: example-php-docker-helloworld
   name: sit-example-php-docker-helloworld
+  namespace: sit-helloworld-ns
 spec:
   replicas: 1
   selector:
@@ -73,7 +75,7 @@ if we want to deploy for production, change the build parameter into `prd`
 $ kustomize build overlays/prd
 ```
 
-result will be different, compared to when build against `sit`
+result will be different, compared to when build against `sit`. As we can see, it use another namespace which is `prd-helloworld-ns`
 ```
 apiVersion: v1
 kind: Service
@@ -81,6 +83,7 @@ metadata:
   labels:
     app: example-php-docker-helloworld
   name: prd-example-php-docker-helloworld
+  namespace: prd-helloworld-ns
 spec:
   ports:
   - port: 8080
@@ -94,6 +97,7 @@ metadata:
   labels:
     app: example-php-docker-helloworld
   name: prd-example-php-docker-helloworld
+  namespace: prd-helloworld-ns
 spec:
   replicas: 3
   selector:

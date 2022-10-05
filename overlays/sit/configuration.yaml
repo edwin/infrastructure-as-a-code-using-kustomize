@@ -1,0 +1,7 @@
+namePrefix:
+  - version: v1
+    kind: Deployment
+    path: metadata/namespace
+  - version: v1
+    kind: Service
+    path: metadata/namespace

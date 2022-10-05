@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: example-php-docker-helloworld
+  namespace: helloworld-ns  
 spec:
   replicas: 3
   template:

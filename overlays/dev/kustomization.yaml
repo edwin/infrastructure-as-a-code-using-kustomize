@@ -4,3 +4,5 @@ namePrefix: dev-
 patchesStrategicMerge:
 - healthcheck_patch.yaml
 - memorylimit_patch.yaml
+configurations:
+  - configuration.yaml
